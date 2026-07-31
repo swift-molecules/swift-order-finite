@@ -1,12 +1,15 @@
 import Order_Finite_Primitives
 import Testing
 
-@Suite("Order.Monotonicity Finite Tests")
-struct OrderMonotonicityFiniteTests {
-    @Suite struct Unit {}
+extension Order.Monotonicity {
+    @Suite struct Tests {
+        @Suite struct Unit {}
+        @Suite struct `Edge Case` {}
+        @Suite struct Integration {}
+    }
 }
 
-extension OrderMonotonicityFiniteTests.Unit {
+extension Order.Monotonicity.Tests.Unit {
     @Test
     func `count is three`() {
         #expect(Order.Monotonicity.count == 3)
