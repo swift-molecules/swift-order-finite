@@ -1,4 +1,4 @@
-import Order_Finite_Primitives
+import Order_Finite
 import Testing
 
 extension Order.Monotonicity {

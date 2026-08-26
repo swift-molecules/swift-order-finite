@@ -1,4 +1,4 @@
-# Order Finite Primitives
+# Order Finite
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -11,7 +11,7 @@ Finite enumerable conformance for the `Order` namespace — makes `Order.Monoton
 `Finite.Enumerable` is the protocol for types with a known, finite set of values that can be indexed by ordinal. This package supplies the conformance for `Order.Monotonicity` — the three ways a sequence can be ordered (`increasing`, `decreasing`, `constant`) — so it can be counted, ordinal-indexed, and reconstructed from an ordinal without re-deriving the mapping at every call site.
 
 ```swift
-import Order_Finite_Primitives
+import Order_Finite
 
 // Order.Monotonicity is now Finite.Enumerable: it has a fixed cardinality
 // and each case maps to a stable ordinal.
@@ -27,7 +27,7 @@ let restored = Order.Monotonicity(_unchecked: (), ordinal: index)
 
 The ordinal-based initializer is labelled `_unchecked:` because it trusts the ordinal to lie in `0..<count`. Pass it a value you obtained from `ordinal` (as above) or one you have already bounds-checked.
 
-The main target re-exports `Finite Enumerable Primitives` and `Order Monotonicity Primitives`, so importing `Order_Finite_Primitives` alone brings both `Order.Monotonicity` and the `Finite.Enumerable` protocol into scope.
+The main target re-exports `Finite Enumerable` and `Order Monotonicity`, so importing `Order_Finite` alone brings both `Order.Monotonicity` and the `Finite.Enumerable` protocol into scope.
 
 ---
 
@@ -35,7 +35,7 @@ The main target re-exports `Finite Enumerable Primitives` and `Order Monotonicit
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-order-finite-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-order-finite.git", branch: "main")
 ]
 ```
 
@@ -43,7 +43,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Order Finite Primitives", package: "swift-order-finite-primitives"),
+        .product(name: "Order Finite", package: "swift-order-finite"),
     ]
 )
 ```
@@ -58,8 +58,8 @@ Two library products. Depends on the `Finite.Enumerable`, `Order.Monotonicity`, 
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Order Finite Primitives` | `Sources/Order Finite Primitives/` | Conforms `Order.Monotonicity` to `Finite.Enumerable` (`count`, `ordinal`, and the ordinal-based initializer); re-exports `Finite Enumerable Primitives` and `Order Monotonicity Primitives`. |
-| `Order Finite Primitives Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
+| `Order Finite` | `Sources/Order Finite/` | Conforms `Order.Monotonicity` to `Finite.Enumerable` (`count`, `ordinal`, and the ordinal-based initializer); re-exports `Finite Enumerable` and `Order Monotonicity`. |
+| `Order Finite Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
 
 Foundation-free.
 

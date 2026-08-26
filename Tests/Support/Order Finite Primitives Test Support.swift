@@ -1,1 +1,0 @@
-internal import Order_Finite_Primitives

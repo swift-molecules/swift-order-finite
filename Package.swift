@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-order-finite-primitives",
+    name: "swift-order-finite",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -13,54 +13,54 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Order Finite Primitives",
-            targets: ["Order Finite Primitives"]
+            name: "Order Finite",
+            targets: ["Order Finite"]
         ),
         .library(
-            name: "Order Finite Primitives Test Support",
-            targets: ["Order Finite Primitives Test Support"]
+            name: "Order Finite Test Support",
+            targets: ["Order Finite Test Support"]
         ),
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-finite-primitives.git",
+            url: "https://github.com/swift-molecules/swift-finite.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-order-primitives.git",
+            url: "https://github.com/swift-molecules/swift-order.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-cardinal-primitives.git",
+            url: "https://github.com/swift-molecules/swift-cardinal.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ordinal-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ordinal.git",
             branch: "main"
         ),
     ],
     targets: [
         .target(
-            name: "Order Finite Primitives",
+            name: "Order Finite",
             dependencies: [
-                .product(name: "Finite Enumerable Primitives", package: "swift-finite-primitives"),
-                .product(name: "Order Monotonicity Primitives", package: "swift-order-primitives"),
-                .product(name: "Cardinal Primitives", package: "swift-cardinal-primitives"),
-                .product(name: "Ordinal Primitives", package: "swift-ordinal-primitives"),
+                .product(name: "Finite Enumerable", package: "swift-finite"),
+                .product(name: "Order Monotonicity", package: "swift-order"),
+                .product(name: "Cardinal", package: "swift-cardinal"),
+                .product(name: "Ordinal", package: "swift-ordinal"),
             ]
         ),
         .target(
-            name: "Order Finite Primitives Test Support",
+            name: "Order Finite Test Support",
             dependencies: [
-                "Order Finite Primitives"
+                "Order Finite"
             ],
             path: "Tests/Support"
         ),
         .testTarget(
-            name: "Order Finite Primitives Tests",
+            name: "Order Finite Tests",
             dependencies: [
-                "Order Finite Primitives",
-                "Order Finite Primitives Test Support",
+                "Order Finite",
+                "Order Finite Test Support",
             ]
         ),
     ],

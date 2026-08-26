@@ -1,7 +1,7 @@
-import Cardinal_Primitives
-public import Finite_Enumerable_Primitives
-public import Order_Monotonicity_Primitives
-import Ordinal_Primitives
+import Cardinal
+public import Finite_Enumerable
+public import Order_Monotonicity
+import Ordinal
 
 extension Order.Monotonicity: @retroactive Finite.Enumerable {
 
