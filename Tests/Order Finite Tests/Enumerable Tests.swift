@@ -1,4 +1,6 @@
+import Cardinal
 import Order_Finite
+import Ordinal
 import Testing
 
 extension Order.Monotonicity {
@@ -12,25 +14,25 @@ extension Order.Monotonicity {
 extension Order.Monotonicity.Tests.Unit {
     @Test
     func `count is three`() {
-        #expect(Order.Monotonicity.count == 3)
+        #expect(Order.Monotonicity.count == Cardinal(3))
     }
 
     @Test
     func `increasing has ordinal zero`() {
         let value = Order.Monotonicity.increasing
-        #expect(value.ordinal == 0)
+        #expect(value.ordinal == Ordinal(0))
     }
 
     @Test
     func `decreasing has ordinal one`() {
         let value = Order.Monotonicity.decreasing
-        #expect(value.ordinal == 1)
+        #expect(value.ordinal == Ordinal(1))
     }
 
     @Test
     func `constant has ordinal two`() {
         let value = Order.Monotonicity.constant
-        #expect(value.ordinal == 2)
+        #expect(value.ordinal == Ordinal(2))
     }
 
     @Test

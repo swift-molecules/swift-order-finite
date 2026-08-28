@@ -23,19 +23,23 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-finite.git",
+            url: "https://github.com/swift-atoms/swift-finite.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-order.git",
+            url: "https://github.com/swift-molecules/swift-finite-ordinal.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-cardinal.git",
+            url: "https://github.com/swift-atoms/swift-order.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-ordinal.git",
+            url: "https://github.com/swift-atoms/swift-cardinal.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-atoms/swift-ordinal.git",
             branch: "main"
         ),
     ],
@@ -43,8 +47,9 @@ let package = Package(
         .target(
             name: "Order Finite",
             dependencies: [
-                .product(name: "Finite Enumerable", package: "swift-finite"),
-                .product(name: "Order Monotonicity", package: "swift-order"),
+                .product(name: "Finite", package: "swift-finite"),
+                .product(name: "Finite Ordinal", package: "swift-finite-ordinal"),
+                .product(name: "Order", package: "swift-order"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(name: "Ordinal", package: "swift-ordinal"),
             ]
@@ -61,6 +66,8 @@ let package = Package(
             dependencies: [
                 "Order Finite",
                 "Order Finite Test Support",
+                .product(name: "Cardinal", package: "swift-cardinal"),
+                .product(name: "Ordinal", package: "swift-ordinal"),
             ]
         ),
     ],

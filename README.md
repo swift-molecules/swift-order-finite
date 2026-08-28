@@ -27,7 +27,7 @@ let restored = Order.Monotonicity(_unchecked: (), ordinal: index)
 
 The ordinal-based initializer is labelled `_unchecked:` because it trusts the ordinal to lie in `0..<count`. Pass it a value you obtained from `ordinal` (as above) or one you have already bounds-checked.
 
-The main target re-exports `Finite Enumerable` and `Order Monotonicity`, so importing `Order_Finite` alone brings both `Order.Monotonicity` and the `Finite.Enumerable` protocol into scope.
+The main target composes and re-exports the atom-owned `Finite` and `Order` domains with the `Finite Ordinal` owner of `Finite.Enumerable`, so importing `Order_Finite` alone brings both `Order.Monotonicity` and the enumerable protocol into scope.
 
 ---
 
@@ -48,17 +48,17 @@ dependencies: [
 )
 ```
 
-Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 (or the matching Linux / Windows toolchain).
+Requires Swift 6.4 and macOS 27 / iOS 27 / tvOS 27 / watchOS 27 / visionOS 27 (or the matching Linux / Windows toolchain).
 
 ---
 
 ## Architecture
 
-Two library products. Depends on the `Finite.Enumerable`, `Order.Monotonicity`, `Cardinal`, and `Ordinal` primitives.
+Two library products. Depends on the atom-owned `Finite`, `Order`, `Cardinal`, and `Ordinal` domains plus the `Finite Ordinal` molecule that owns `Finite.Enumerable`.
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Order Finite` | `Sources/Order Finite/` | Conforms `Order.Monotonicity` to `Finite.Enumerable` (`count`, `ordinal`, and the ordinal-based initializer); re-exports `Finite Enumerable` and `Order Monotonicity`. |
+| `Order Finite` | `Sources/Order Finite/` | Conforms `Order.Monotonicity` to `Finite.Enumerable` (`count`, `ordinal`, and the ordinal-based initializer); re-exports the current `Finite`, `Finite Ordinal`, and `Order` owners. |
 | `Order Finite Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
 
 Foundation-free.
@@ -69,7 +69,7 @@ Foundation-free.
 
 | Platform | Status |
 |----------|--------|
-| macOS 26 | Full support |
+| macOS 27 | Full support |
 | Linux | Full support |
 | Windows | Full support |
 | iOS / tvOS / watchOS / visionOS | Supported |

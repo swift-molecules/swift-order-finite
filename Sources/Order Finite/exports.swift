@@ -1,2 +1,3 @@
-@_exported public import Finite_Enumerable
-@_exported public import Order_Monotonicity
+@_exported public import Finite
+@_exported public import Finite_Ordinal
+@_exported public import Order
